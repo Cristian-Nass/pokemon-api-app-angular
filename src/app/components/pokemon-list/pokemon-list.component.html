@@ -1,0 +1,56 @@
+<div class="pokemon-list-container">
+  <div
+    *ngFor="let pokemon of loadedData.results"
+    (click)="pokemonDetails(pokemon.name)"
+    class="pokemon-list-name"
+  >
+    <div class="pokemon-card">
+      <div>
+        <img width="90" [src]="pokemon.imageUrl" />
+      </div>
+      <div>
+        {{ pokemon.name }}
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  style="
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    left: 48%;
+    color: #6e6b6b;
+  "
+  *ngIf="loading"
+>
+  Loading...
+</div>
+<div style="text-align: center; padding-top: 10px">
+  <button
+    [disabled]="loading || !loadedData.previous"
+    (click)="previous()"
+    class="next-back-button"
+    [style.cursor]="!loadedData.previous ? 'not-allowed' : 'pointer'"
+    [style.background-color]="
+      loading || !loadedData.previous
+        ? 'rgb(170, 170, 170)'
+        : 'rgb(47, 118, 199)'
+    "
+    style="margin-right: 3vw; border-radius: 0px 20px"
+  >
+    Back
+  </button>
+  <button
+    [disabled]="loading || !loadedData.next"
+    (click)="next()"
+    class="next-back-button"
+    [style.cursor]="!loadedData.next ? 'not-allowed' : 'pointer'"
+    [style.background-color]="
+      loading || !loadedData.next ? 'rgb(170 , 170, 170)' : 'rgb(47, 118, 199)'
+    "
+    style="margin-left: 3vw; border-radius: 20px 0px"
+  >
+    Next
+  </button>
+</div>

@@ -1,0 +1,58 @@
+<div
+  class="pokemon-details-container"
+  [style.background-color]="bookmarkService.getBookmarkValue(pockemonDetails.id) ? 'salmon' : '#7bbded'"
+>
+  <button class="back-button" (click)="moveToBackPage()">&lt;</button>
+  <div style="text-align: center">
+    <img [src]="pockemonDetails.sprites.back_default" />
+    <img [src]="pockemonDetails.sprites.front_default" />
+  </div>
+  <div class="divider-details-card"></div>
+  <div style="display: flex; padding-top: 8px">
+    <div style="width: 200px">Id:</div>
+    <div>{{ pockemonDetails.id }}</div>
+  </div>
+  <div class="divider-details-card"></div>
+  <div style="display: flex; padding-top: 8px">
+    <div style="width: 200px">Name:</div>
+    <div>{{ pokemonName }}</div>
+  </div>
+  <div class="divider-details-card"></div>
+
+  <div style="display: flex; padding-top: 8px">
+    <div style="width: 200px">Height:</div>
+    <div>{{ pockemonDetails.height }}</div>
+  </div>
+  <div class="divider-details-card"></div>
+
+  <div style="display: flex; padding-top: 8px">
+    <div style="width: 200px">Weight:</div>
+    <div>{{ pockemonDetails.weight }}</div>
+  </div>
+  <div class="divider-details-card"></div>
+
+  <div style="display: flex; padding-top: 8px">
+    <div style="width: 200px">Abilities name:</div>
+    <div>
+      <div *ngFor="let pokemon of pockemonDetails.abilities">
+        {{ pokemon.ability.name }}
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-evenly; padding-top: 20px">
+    <div>
+      <label for="bookmark">Bookmark</label>
+      <input
+        [checked]="bookmarkService.getBookmarkValue(pockemonDetails.id)"
+        type="checkbox"
+        id="bookmark"
+        name="bookmark"
+        (change)="bookmarkService.bookmarkToggle(pockemonDetails.id)"
+        style="cursor: pointer"
+      />
+    </div>
+    <button class="button" (click)="pokemonEvolution(pockemonDetails.id)">
+      Evolutions
+    </button>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div style="width: 100%; text-align: center">
+  <div class="pokemon-evolution-title">Pokemon Evolution !</div>
+  <div class="evolution-details-container">
+    <div>Evolution ID</div>
+    <div class="evolution-details-font">{{ pockemonEvolution.id }}</div>
+  </div>
+  <div class="evolution-details-container">
+    <div>Minimum Level</div>
+    <div class="evolution-details-font">{{ pockemonEvolution.minLevel }}</div>
+  </div>
+  <div class="evolution-details-container">
+    <div>Evolution Species Name</div>
+    <div class="evolution-details-font">{{ pockemonEvolution.species }}</div>
+  </div>
+  <button class="back-button" (click)="oneStepBack()">&lt;</button>
+</div>
